@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfrp0km2xjcr6"]
+[gd_scene load_steps=10 format=3 uid="uid://dfrp0km2xjcr6"]
 
 [ext_resource type="Script" path="res://game.gd" id="2"]
 [ext_resource type="TileSet" uid="uid://crkgfdw1y80hc" path="res://levels/rooms/tileset_bridges.tres" id="2_vnf5n"]
 [ext_resource type="TileSet" uid="uid://cqb2wtrubw0n6" path="res://levels/rooms/tileset_invisible_walls.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://dds7yrrx56gcy" path="res://player/player.tscn" id="4_5ym7b"]
+[ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://tours/102_assemble_your_first_game/05_add_chest_that_spawns_pickups/levels/rooms/room_a.tscn" id="5_xkioy"]
+[ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="6_u70cc"]
+[ext_resource type="PackedScene" uid="uid://cq0mmphkbrvmm" path="res://levels/rooms/room_c.tscn" id="7_5wtyx"]
+[ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="8_ektwk"]
+[ext_resource type="PackedScene" uid="uid://cce7r30dfjm4r" path="res://interface/bars/ui_health_bar.tscn" id="9_eppkg"]
 
 [node name="Start" type="Node2D"]
+scale = Vector2(1.23648, 0.869719)
 script = ExtResource("2")
 
 [node name="Bridges" type="TileMap" parent="."]
@@ -18,3 +25,32 @@ tile_set = ExtResource("3")
 format = 2
 layer_0/name = "Invisible walls"
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("4_5ym7b")]
+position = Vector2(310.559, 147.174)
+
+[node name="RoomA" parent="." instance=ExtResource("5_xkioy")]
+
+[node name="RoomB" parent="." instance=ExtResource("6_u70cc")]
+position = Vector2(-7.62939e-06, 0)
+
+[node name="RoomC" parent="." instance=ExtResource("7_5wtyx")]
+
+[node name="Player2" parent="." instance=ExtResource("4_5ym7b")]
+position = Vector2(-708.524, -898.638)
+
+[node name="Player3" parent="." instance=ExtResource("4_5ym7b")]
+position = Vector2(-707.715, -899.788)
+
+[node name="BackgroundBlueSky" parent="." instance=ExtResource("8_ektwk")]
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(0, 36)
+
+[node name="Node" type="Node" parent="Window"]
+
+[node name="UIHealthBar" parent="Window/Node" instance=ExtResource("9_eppkg")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Window/Node"]
+
+[connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]

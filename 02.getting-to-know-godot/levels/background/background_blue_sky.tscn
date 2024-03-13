@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://ck4a00lm1krmo" path="res://levels/background/far_island_2.png" id="9"]
 
 [sub_resource type="ShaderMaterial" id="32"]
-render_priority = 0
 shader = ExtResource("1_e0ril")
+shader_parameter/color = null
 
 [sub_resource type="ShaderMaterial" id="31"]
-render_priority = 0
 shader = ExtResource("1_e0ril")
+shader_parameter/color = null
 
 [sub_resource type="Curve" id="34"]
 _data = [Vector2(0, 0.0298014), 0.0, 4.09699, 0, 0, Vector2(0.522584, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00331128), -4.54184, 0.0, 0, 0]
@@ -116,6 +116,7 @@ mouse_filter = 2
 color = Color(0.545098, 0.72549, 0.823529, 0.443137)
 
 [node name="LayerTop" type="ParallaxLayer" parent="."]
+position = Vector2(-6, 0)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1920, 1080)
 
@@ -138,10 +139,10 @@ texture = ExtResource("4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LayerTop"]
 unique_name_in_owner = true
-autoplay = "loop"
 libraries = {
 "": SubResource("AnimationLibrary_erbys")
 }
+autoplay = "loop"
 
 [node name="Fade" type="ColorRect" parent="."]
 anchors_preset = 15
